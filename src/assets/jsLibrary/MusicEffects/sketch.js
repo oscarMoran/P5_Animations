@@ -12,15 +12,16 @@ var h = window.innerHeight;
 
 function setup(){
     let canvas = createCanvas(w,h);
-    setInterval(()=>{
+    amp = new p5.Amplitude();
+    slider = createSlider(0,1,0.5,0.01);
+    song = loadSound('./assets/jsLibrary/10densParis.mp3', Loaded );
+
         var div = document.getElementById("musicAnimation");
         if(div){
           canvas.parent(div);
         }
-    }, 2000);
-    amp = new p5.Amplitude();
-    slider = createSlider(0,1,0.5,0.01);
-    song = loadSound('./assets/jsLibrary/10densParis.mp3', Loaded );
+
+    
     StarsLoad();
 }
 
@@ -63,7 +64,7 @@ function draw(){
     if(diam > 120){
         trails.push(new Chemtrail(width /2, height / 2));
     }
-    let c =50;
+
     beginShape();
     trails.forEach((t, v) => {
         t.Update(diam);
@@ -71,10 +72,7 @@ function draw(){
         if(t.IsDeleteit()){
             trails.splice(t,1);
         }
-        currentXvalue = t.x;
-        var tones = map(currentXvalue,0,1,height,0);
-        vertex(c,tones);
-        c+= 1;
+
     });
     endShape();
 }

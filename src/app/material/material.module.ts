@@ -28,3 +28,26 @@ import {MatCardModule} from '@angular/material/card';
   ]
 })
 export class MaterialModule { }
+
+export class URLLoader {
+  constructor() {
+
+  }
+
+  loadScripts() {
+
+    const dynamicScripts = [
+      './assets/jsLibrary/MusicEffects/sketch.js'
+    ];
+
+    for (let i = 0; i < dynamicScripts.length; i++) {
+      const node = document.createElement('script');
+      node.src = dynamicScripts[i];
+      node.type = 'text/javascript';
+      node.async = false;
+      node.charset = 'utf-8';
+      document.getElementsByTagName('app-root')[0].appendChild(node);
+    }
+  }
+
+}
