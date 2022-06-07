@@ -8,10 +8,10 @@ function setup() {
   let canvas = createCanvas(w, h);
   setInterval(()=>{
     var div = document.getElementById("AnimationContainer");
-    console.log(div);
-    canvas.parent(div);
+    if(div){
+      canvas.parent(div);
+    }
   }, 2000);
- 
   
   }
   
